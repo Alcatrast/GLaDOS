@@ -11,13 +11,14 @@ namespace GLaDOS.VoiceMode.Handler
             //GPT обрабатывает текст
             string response = "я слишком мала для таких вопросов";
             _ = Task.Run(() => { Tell(response); });
-            return new PhysCommand(PhysCommand.DeviceType.Animation, 4, 0);
+            return new PhysCommand(PhysCommand.DeviceType.Animation, 1, 0);
         }
 
         private void Tell(string text)
         {
             if (string.IsNullOrEmpty(text)) { return; }
-            new Speaker().Play(Speaker.Audio.Beatles);
+            string path= new TTSController().GetOggPath(text);
+            new AudioPlayer().Play(path,true);
         }
     }
 }

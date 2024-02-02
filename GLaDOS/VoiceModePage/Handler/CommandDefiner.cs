@@ -23,7 +23,7 @@ namespace GLaDOS.VoiceMode.Handler
         {
             command = default;
             text = text.ToLower();
-           // if(new ActivateWordNoCommand().IsCommandDefinedIn(text)==false) { return false; }
+            if(new ActivateWordNoCommand().IsCommandDefinedIn(text)==false) { return false; }
 
 
             CommandCommentPair resultPair = new UndefinedCommandComment();
