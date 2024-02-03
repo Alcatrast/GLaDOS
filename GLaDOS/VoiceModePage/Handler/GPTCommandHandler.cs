@@ -1,5 +1,6 @@
 ﻿using Robot.CommandModels;
 using GLaDOS.Service.SoundSpeaker;
+using GLaDOS.VoiceMode.Handler.GPTService.Yandex;
 
 namespace GLaDOS.VoiceMode.Handler
 {
@@ -9,7 +10,8 @@ namespace GLaDOS.VoiceMode.Handler
         public IGladCommand Run(string text)
         {
             //GPT обрабатывает текст
-            string response = "я слишком мала для таких вопросов";
+            var gptHandler= new YandexGPTHandler();
+            string response = gptHandler.GetResponse(text);
             _ = Task.Run(() => { Tell(response); });
             return new PhysCommand(PhysCommand.DeviceType.Animation, 1, 0);
         }
@@ -20,5 +22,6 @@ namespace GLaDOS.VoiceMode.Handler
             string path= new TTSController().GetOggPath(text);
             new AudioPlayer().Play(path,true);
         }
+
     }
 }
