@@ -3,15 +3,16 @@
     public class YandexGPTRequestBody
 
     {
-        public string modelUri { get; set; } = "gpt://b1gjrufr9r3iqldoao59/yandexgpt-lite";
+        public string modelUri { get; set; } = $"gpt://{General.Configuration.Tokens.YandexFolderId}/yandexgpt";
         public YandexGPTCompletionOptions completionOptions { get; set; } = new();
-        public List<YandexGPTMessage> messages { get; set; } = new()
+        public List<YandexGPTMessage> messages { get; set; } = new();
+        public static YandexGPTRequestBody BuildFrom(string userCurrentRequest, GPTSettings settings)
         {
-        new(){ role="system",text="Ты умный ассистент, отвечай ОЧЕНЬ кратко."},
-        new(){role="user",text="Привет! Как мне подготовиться к экзаменам?"},
-        new(){role="assistant",text="Привет! По каким предметам?"},
-        new(){role="user",text="Математике и физике"}
-        };
+            YandexGPTRequestBody result= new();
+            result.messages = settings.Dialog.Messages;
+            result.messages.Add(new() { role = "user", text = userCurrentRequest });
+            return result;
+        }
 
     }
     public class YandexGPTCompletionOptions

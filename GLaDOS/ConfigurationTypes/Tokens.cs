@@ -2,7 +2,8 @@
 {
     public class Tokens
     {
-        public string YandexIAM { get; private set; } ="TOKEN";
+        public string YandexAPIKey { get; private set; } ="TOKEN";
         public string SileroTTS { get; private set; } ="TOKEN";
+        public string YandexFolderId { get; private set; } = "FOLDERID";
     }
 }
