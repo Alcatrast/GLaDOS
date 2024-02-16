@@ -6,7 +6,7 @@ namespace GLaDOS.VoiceMode.Model
     public class ActivateWordNoCommand : KeyWordsCommandPair
     {
         public ActivateWordNoCommand() : base(
-            new() { "лада", "glados", "гладос", "владос","попадос", "нос", "босс", "газ", "главная", "глава" },
+            new() { "лада", "glados", "гладос", "владос","попадос", "нос", "босс", "газ","дос","дас", "главная", "глава" },
             default
             )
         { }

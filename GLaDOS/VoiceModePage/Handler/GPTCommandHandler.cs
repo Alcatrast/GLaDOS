@@ -27,6 +27,8 @@ namespace GLaDOS.VoiceMode.Handler
             int ae = ms / General.Configuration.AnimationMsD;
             if(ae >9999) { ae = 9999; }
             return new PhysCommand(PhysCommand.DeviceType.Animation, ae/1000, ae%1000);
+          //  return new PhysCommand(PhysCommand.DeviceType.Animation,1, 0);
+
         }
     }
 }
